@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)http://courses.ncsu.edu/csc342/lec/001/wrap/WordDecoder.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>The Word Decoder Game</title>
+    <link href="./original_files/wd.css" type="text/css" rel="stylesheet">
+
+    <script type="text/javascript">
+    <!-- Start hiding JavaScript statements
+
+      //Define global variables and an array
+      var Request = false; 
+      var wordArray = new Array(25);
+      var scrambledWord = "";
+      var unscrambledWord = "";
+
+     //Populate the array is a string made up of copies of the same word (one
+     //unscrambled and the other scrambled
+      wordArray[0] = "uncoil clinou";
+      wordArray[1] = "influx flixun";
+      wordArray[2] = "frolic frilco";
+      wordArray[3] = "joyous yoosuj";
+      wordArray[4] = "triple plerti";
+      wordArray[5] = "martin rantim";
+      wordArray[6] = "trill lirlt";
+      wordArray[7] = "elope leepo";
+      wordArray[8] = "nether rethen";
+      wordArray[9] = "sexton nostex";
+      wordArray[10] = "probe borep";
+      wordArray[11] = "magic gimca";
+      wordArray[12] = "impact timcap";
+      wordArray[13] = "snappy spynap";
+      wordArray[14] = "facet tafec";
+      wordArray[15] = "novel venol";
+      wordArray[16] = "lotion toonil";
+      wordArray[17] = "cymbal myclab";
+      wordArray[18] = "patch chapt";
+      wordArray[19] = "draft tarfd";
+      wordArray[20] = "arcade draace";
+      wordArray[21] = "chorus coshur";
+      wordArray[22] = "abbot toabb";
+      wordArray[23] = "elate teale";
+      wordArray[24] = "hazard zardah";
+      wordArray[24] = "verbal blaver";
+
+      //This function is executed when the game�s Get Word button is clicked.
+      function StartGame() {
+
+        //These statements control form element visibility
+        document.getElementById("checkAnswerBtn").style.visibility = "visible";
+        document.getElementById("GetWordBtn").style.visibility = "hidden";
+        document.getElementById("inputField").style.visibility = "visible";
+        document.getElementById("ScrambledHeading").style.visibility = "visible";
+        document.getElementById("UnscrambledHeading").style.visibility = "visible";
+
+        //These statements clear out any text displayed by these elements
+        document.getElementById("inputField").value="";
+        document.getElementById('ScrambledDiv').innerHTML = "";
+
+        //This statement executes the getWord() function
+        getWord();
+
+      }
+
+      //This function retrieves a random word string for the player to guess
+      function getWord() {
+
+        //Declare variables used within the function
+        var randomNo = 0;
+        var selectedWord = "";
+        var loc = 0;
+        
+        //Generate a random number from 0 to 9 and use it to select an element
+        //from the array        
+        randomNo = Math.random() * 24;
+        randomNo = Math.round(randomNo);    
+        selectedWord = wordArray[randomNo]
+
+        loc = selectedWord.indexOf(" ");               //Locate the blank space
+        unscrambledWord = selectedWord.substr(0, loc); //Assign the unscrambled
+                                                       //word
+
+        scrambledWord = selectedWord.substr(loc + 1);  //Assign the scrambled word
+
+        //Display the scrambled version of the word in the browser window
+        document.getElementById('ScrambledDiv').innerHTML = scrambledWord;
+
+      }
+
+      //This function analyzes the player's input and resets the form to its
+      //starting state       
+      function CheckAnswer() {
+
+        //Analyze the player�s input
+        switch (document.getElementById("inputField").value) {
+          case unscrambledWord:
+            window.alert("Correct. You successfully decoded the secret word!"); 
+            break;
+          case "":
+            window.alert("You did not type anything!"); 
+            break;
+
+          default:
+            window.alert("Incorrect. The secret word was " + unscrambledWord + ".");
+        }
+ 
+        //Reset the form back to its starting state
+        document.getElementById('ScrambledDiv').innerHTML = "";
+        document.getElementById("inputField").value = "";
+        document.getElementById("checkAnswerBtn").style.visibility="hidden";
+        document.getElementById("GetWordBtn").style.visibility = "visible";
+        document.getElementById("inputField").style.visibility="hidden";
+        document.getElementById("ScrambledHeading").style.visibility="hidden";
+        document.getElementById("UnscrambledHeading").style.visibility="hidden"
+
+      }
+
+    // End hiding JavaScript statements -->
+    </script>
+
+  </head>
+
+  <body>
+
+    <div id="mainDiv">
+
+      <img src="./original_files/logo.png" alt="A graphic logo that displays the game&#39;s name">
+      
+      <p id="instructions">
+        Click on Get Word to retrieve a scrambled word and then try to
+        figure out what it is. Type your answer in the text field and then click
+        on the Check Answer button.
+      </p>  
+
+      <form action="./original_files/original.html">
+  
+        <div>
+
+          <input type="button" id="GetWordBtn" value="Get Word" onclick="StartGame()">
+
+          <div id="ScrambledHeading" style="visibility: hidden">The scrambled 
+            word is:
+          </div>
+        
+          <div id="ScrambledDiv"> </div>
+ 
+          <div id="UnscrambledHeading" style="visibility:hidden">
+            <p>Unscramble and retype the word here:</p>
+          </div>  
+
+          <input type="text" size="45" style="visibility: hidden" id="inputField">
+
+          <p>
+            <input type="button" id="checkAnswerBtn" value="Check Answer" style="visibility:hidden" onclick="CheckAnswer()">
+          </p>
+
+        </div> 
+
+      </form>
+
+     </div>
+
+  
+
+
+</body></html>

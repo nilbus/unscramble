@@ -1,0 +1,116 @@
+/* Reset */
+
+html, body {
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 1em;
+}
+body {
+  font-size: 100%;
+}
+a img, :link img, :visited img {
+  border: 0;
+}
+
+/* Colors */
+
+.primary-1, section { background-color: #6D44D1 }
+.primary-2 { background-color: #654E9E }
+.primary-3 { background-color: #38178A }
+.primary-4 { background-color: #9574E8 }
+.primary-5, body { background-color: #AC93E8 }
+
+.secondary-a-1 { background-color: #FF513F }
+.secondary-a-2 { background-color: #C15D53 }
+.secondary-a-3 { background-color: #A82315 }
+.secondary-a-4 { background-color: #FF7D6F }
+.secondary-a-5 { background-color: #FFA096 }
+
+.secondary-b-1 { background-color: #36DB5B }
+.secondary-b-2 { background-color: #47A65C }
+.secondary-b-3 { background-color: #12912E }
+.secondary-b-4 { background-color: #68ED85 }
+.secondary-b-5 { background-color: #8CEDA2 }
+
+.secondary-a-1-text { color: #FF513F }
+.secondary-a-2-text { color: #C15D53 }
+.secondary-a-3-text { color: #A82315 }
+.secondary-a-4-text { color: #FF7D6F }
+.secondary-a-5-text, #incorrect { color: #FFA096 }
+
+.secondary-b-1-text { color: #36DB5B }
+.secondary-b-2-text { color: #47A65C }
+.secondary-b-3-text { color: #12912E }
+.secondary-b-4-text { color: #68ED85 }
+.secondary-b-5-text, #correct { color: #8CEDA2 }
+
+.complement-1 { background-color: #FFE23F }
+.complement-2 { background-color: #C1B053 }
+.complement-3 { background-color: #A89215 }
+.complement-4 { background-color: #FFE96F }
+.complement-5, input { background-color: #FFEF96 }
+
+/* Layout */
+
+html,body {
+  height: 100%;
+}
+
+body {
+  text-align: center;
+}
+
+section {
+  border-radius: 10px;
+  -moz-box-shadow: 10px 10px 5px black;
+  -webkit-box-shadow: 0px 0px 10px black;
+  color: white;
+  font-family: helvetica,ariel,sans;
+  font-size: 18px;
+  margin-left: -200px;
+  left: 50%;
+  padding: 20px;
+  position: absolute;
+  text-align: center;
+  text-shadow: 1px 1px 1px #555;
+  top: 100px;
+  width: 400px;
+}
+
+h1 {
+  font-size: 60px;
+  margin: 0 0 20px;
+}
+
+#word {
+  margin: 10px;
+}
+
+input {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+#word, input {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#scores {
+  margin: 20px 70px;
+}
+
+#correct_score {
+  right: 55%;
+  position: absolute;
+}
+
+#incorrect_score {
+  left: 55%;
+  position: absolute;
+}
