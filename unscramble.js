@@ -9,15 +9,11 @@ responses = {
 $(document).ready(function() {
   $('#response').text(responses['welcome']);
   initialize();
-  pickNextWord();
   $('input').focus();
   $('input').keypress(handleKey);
 });
 
 function initialize() {
-  // Get previous scores from persistent storage
-  loadScores();
-
   // Load colors from stylesheet
   var colorContainer = $('<div style="display: none;">').appendTo($('body'));
   document.defaultColor = $('<input>').appendTo(colorContainer).css('background-color');
@@ -54,11 +50,15 @@ function initialize() {
     {unscrambled: 'hazard', scrambled: 'zardah'},
     {unscrambled: 'verbal', scrambled: 'blaver'},
   ]
+
+  // Get previous scores from persistent storage
+  loadGame();
+
 }
 
-function pickNextWord() {
+function pickNextWord(wordOverride) {
   var wordbox = $('#word');
-  document.currentWord = document.wordPool[Math.floor(Math.random() * document.wordPool.length)]
+  document.currentWord = wordOverride || document.wordPool[Math.floor(Math.random() * document.wordPool.length)];
   wordbox.text('');
   wordbox.hide();
   wordbox.text(document.currentWord.scrambled);
@@ -83,8 +83,8 @@ function checkWord() {
       $('#response').text(responses['incorrect'] + document.currentWord.unscrambled);
     $('#incorrect').text(++document.incorrectCount);
   }
-  persistScores();
   pickNextWord();
+  persistGame();
   input.val('');
 }
 
@@ -92,23 +92,28 @@ function webStorageSupported() {
   return ('localStorage' in window) && window['localStorage'] !== null;
 }
 
-function loadScores() {
+function loadGame() {
   if (webStorageSupported()) {
     document.correctCount = localStorage['correctCount'] || 0;
     document.incorrectCount = localStorage['incorrectCount'] || 0;
+    console.log(localStorage['currentWord']);
+    pickNextWord(JSON.parse(localStorage['currentWord']));
+    persistGame(); // Save the word that was just loaded, to keep it from changing on page reload
   } else {
     document.correctCount = 0;
     document.incorrectCount = 0;
+    pickNextWord();
   }
 
   $('#correct').text(document.correctCount);
   $('#incorrect').text(document.incorrectCount);
 }
 
-function persistScores() {
+function persistGame() {
   if (webStorageSupported()) {
     localStorage.setItem('correctCount', document.correctCount);
     localStorage.setItem('incorrectCount', document.incorrectCount);
+    localStorage.setItem('currentWord', JSON.stringify(document.currentWord));
   }
 }
 
