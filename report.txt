@@ -1,0 +1,35 @@
+Unscramble - the word decoder game revamped in HTML5/CSS3
+
+Author: Edward Anderson
+
+Changes
+- Complete rewrite of HTML markup and javascript, making it look pretty.
+- Uses HTML5 section tag
+- Color fading and textual feedback for correct and incorrect answers.
+- CSS3 shadows, rounded corners, text shadows.
+- Correct and incorrect answers are counted and saved in local browser storage.
+- Looks good on mobile devices (iPhone, Android)
+
+Validated on validator.w3.org with no warnings.
+
+Browser lab test results:
+- Firefox 3.6 Windows
+    PASS
+- Firefox 3.6 OS X
+    PASS
+- Chrome 8.0 Windows
+    PASS
+- Internet Explorer 8.0 Windows
+    FAIL: game window is fullscreen, rather than in a properly sized box
+- Safari 5.0 OS X
+    PASS
+
+Old browser test:
+- Firefox 2.0 Windows
+    FAIL: game window is fullscreen, rather than in a properly sized box
+          a dark blue box covers the game instructions and part of the scrambled word
+- Internet Explorer 6.0 Windows
+    FAIL: game window is fullscreen, rather than in a properly sized box
+          javascript does not run
+- Safari 3.0 OS X
+    PASS

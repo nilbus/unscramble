@@ -15,8 +15,7 @@ $(document).ready(function() {
 });
 
 function initialize() {
-  document.correctCount = 0;
-  document.incorrectCount = 0;
+  loadScores();
 
   document.wordPool = [
     {unscrambled: 'uncoil', scrambled: 'clinou'},
@@ -77,8 +76,33 @@ function checkWord() {
       $('#response').text(responses['incorrect'] + document.currentWord.unscrambled);
     $('#incorrect').text(++document.incorrectCount);
   }
+  persistScores();
   pickNextWord();
   input.val('');
+}
+
+function webStorageSupported() {
+  return ('localStorage' in window) && window['localStorage'] !== null;
+}
+
+function loadScores() {
+  if (webStorageSupported()) {
+    document.correctCount = localStorage['correctCount'] || 0;
+    document.incorrectCount = localStorage['incorrectCount'] || 0;
+  } else {
+    document.correctCount = 0;
+    document.incorrectCount = 0;
+  }
+
+  $('#correct').text(document.correctCount);
+  $('#incorrect').text(document.incorrectCount);
+}
+
+function persistScores() {
+  if (webStorageSupported()) {
+    localStorage.setItem('correctCount', document.correctCount);
+    localStorage.setItem('incorrectCount', document.incorrectCount);
+  }
 }
 
 function handleKey(event) {
