@@ -64,7 +64,8 @@ body {
 
 section {
   border-radius: 10px;
-  -moz-box-shadow: 10px 10px 5px black;
+  box-shadow: 0px 0px 10px black;
+  -moz-box-shadow: 0px 0px 10px black;
   -webkit-box-shadow: 0px 0px 10px black;
   color: white;
   font-family: helvetica,ariel,sans;
