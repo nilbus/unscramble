@@ -96,8 +96,7 @@ function loadGame() {
   if (webStorageSupported()) {
     document.correctCount = localStorage['correctCount'] || 0;
     document.incorrectCount = localStorage['incorrectCount'] || 0;
-    console.log(localStorage['currentWord']);
-    pickNextWord(JSON.parse(localStorage['currentWord']));
+    pickNextWord(localStorage['currentWord'] && JSON.parse(localStorage['currentWord']));
     persistGame(); // Save the word that was just loaded, to keep it from changing on page reload
   } else {
     document.correctCount = 0;
