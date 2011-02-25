@@ -25,13 +25,13 @@ a img, :link img, :visited img {
 .secondary-a-1 { background-color: #FF513F }
 .secondary-a-2 { background-color: #C15D53 }
 .secondary-a-3 { background-color: #A82315 }
-.secondary-a-4 { background-color: #FF7D6F }
+.secondary-a-4, .incorrect { background-color: #FF7D6F }
 .secondary-a-5 { background-color: #FFA096 }
 
 .secondary-b-1 { background-color: #36DB5B }
 .secondary-b-2 { background-color: #47A65C }
 .secondary-b-3 { background-color: #12912E }
-.secondary-b-4 { background-color: #68ED85 }
+.secondary-b-4, .correct { background-color: #68ED85 }
 .secondary-b-5 { background-color: #8CEDA2 }
 
 .secondary-a-1-text { color: #FF513F }

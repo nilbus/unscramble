@@ -1,6 +1,6 @@
 responses = {
   welcome:    'Enter the scrambled word',
-  enter:      'Press Enter to try your answer',
+  enter:      'Press enter to try your answer',
   correct:    'Good job! Can you get this one?',
   incorrect:  'Nope. It was ',
   blank:      'Here, try another one',
@@ -15,8 +15,17 @@ $(document).ready(function() {
 });
 
 function initialize() {
+  // Get previous scores from persistent storage
   loadScores();
 
+  // Load colors from stylesheet
+  var colorContainer = $('<div style="display: none;">').appendTo($('body'));
+  document.defaultColor = $('<input>').appendTo(colorContainer).css('background-color');
+  document.correctColor = $('<input class="correct">').appendTo(colorContainer).css('background-color');
+  document.incorrectColor = $('<input class="incorrect">').appendTo(colorContainer).css('background-color');
+  colorContainer.remove();
+
+  // Word set
   document.wordPool = [
     {unscrambled: 'uncoil', scrambled: 'clinou'},
     {unscrambled: 'influx', scrambled: 'flixun'},
@@ -58,18 +67,16 @@ function pickNextWord() {
 
 function checkWord() {
   var input = $('input');
-  var originalInputBackground = input.css('background-color');
-  console.log(document.c=originalInputBackground);
   if (input.val().toLowerCase() == document.currentWord.unscrambled) {
     // Correct answer
-    input.css({'background-color': '#68ED85'});
-    input.animate({'background-color': originalInputBackground}, 800);
+    input.css({'background-color': document.correctColor});
+    input.animate({'background-color': document.defaultColor}, 800);
     $('#response').text(responses['correct']);
     $('#correct').text(++document.correctCount);
   } else {
     // Incorrect answer
-    input.css({'background-color': '#FF7D6F'});
-    input.animate({'background-color': originalInputBackground}, 800);
+    input.css({'background-color': document.incorrectColor});
+    input.animate({'background-color': document.defaultColor}, 800);
     if (input.val() == '')
       $('#response').text(responses['blank']);
     else
